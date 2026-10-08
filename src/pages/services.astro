@@ -1,0 +1,5 @@
+---
+import Base from '../layouts/Base.astro';
+import services from '../data/services.json';
+---
+<Base title="Services" description="Explore Chelsea Tech’s websites, useful tools and prototypes."><section class="page-head wrap"><p class="eyebrow">What we do</p><h1>Simple tools.<br/><em>Connected work.</em></h1><p class="intro">From your website to the systems behind it, bring clarity to the technology you use every day.</p></section><section class="wrap service-list" aria-label="Chelsea Tech services">{services.map((service,i)=><article><span class="number">0{i+1}</span><div><h2>{service.title}</h2><p>{service.description}</p></div><span aria-hidden="true" class="service-arrow">→</span></article>)}</section><section class="callout wrap"><p class="eyebrow">Start with a conversation</p><h2>What would make your<br/>work a little easier?</h2><a class="button light" href="/about/#contact">Let’s connect →</a></section></Base>

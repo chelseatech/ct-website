@@ -1,0 +1,10 @@
+---
+import '../styles/global.css';
+interface Props { title: string; description: string; }
+const {title, description} = Astro.props;
+const nav = [['/', 'Home'], ['/services/', 'Services'], ['/about/', 'About & contact']];
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>{title} | Chelsea Tech</title><meta name="description" content={description}/><meta name="robots" content="noindex, nofollow"/><link rel="canonical" href={canonical}/><link rel="icon" type="image/svg+xml" href="/favicon.svg"/><meta property="og:title" content={`${title} | Chelsea Tech`}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta property="og:url" content={canonical}/></head>
+<body><a class="skip" href="#main">Skip to content</a><aside class="prototype" aria-label="Prototype notice">LOCAL PROTOTYPE <span>· Design & stack exploration</span></aside><header class="wrap"><a class="brand" href="/" aria-label="Chelsea Tech home"><img src="/favicon.svg" alt="" width="36" height="36"/>chelsea tech<span class="brand-dot">.</span></a><nav aria-label="Main navigation">{nav.map(([href,label])=><a href={href} aria-current={Astro.url.pathname===href?'page':undefined}>{label}</a>)}</nav></header><main id="main" tabindex="-1"><slot/></main><footer class="wrap"><a class="brand" href="/">chelsea tech.</a><p>Chelsea Tech Services Ltd.</p><a href="mailto:ryan@chelseatech.ca">Email Chelsea Tech →</a><small>Prototype for review · {new Date().getFullYear()}</small></footer></body></html>
